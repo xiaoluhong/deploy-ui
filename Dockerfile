@@ -16,7 +16,7 @@ WORKDIR /root
 RUN apk add curl bash gnupg caddy --no-cache
 
 #ADD dist/ /root/ui
-COPY --from=build1  /root/src/dest /root/ui
+COPY --from=build1  /root/src/dist /root/ui
 COPY entrypoint.sh /root
 COPY caddy/Caddyfile /root
 
