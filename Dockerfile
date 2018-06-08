@@ -1,11 +1,18 @@
-FROM alpine:3.7
+FROM node:alpine as build1
+
+RUN mkdir /root/src
+ADD  . /root/src
+WORKDIR /root/src
+
+RUN npm install && npm run build
+
+FROM alpine
 
 WORKDIR /root
-
 RUN apk add curl bash gnupg caddy --no-cache
 
-ADD dist/ /root/ui
-
+#ADD dist/ /root/ui
+COPY --from=build1  /root/src/dest /root/ui
 COPY entrypoint.sh /root
 COPY caddy/Caddyfile /root
 
