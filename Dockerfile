@@ -1,7 +1,7 @@
 FROM node:7 as build1
 
 RUN mkdir /root/src
-COPY . /root/src
+ADD ./ /root/src
 WORKDIR /root/src
 
 RUN npm install
