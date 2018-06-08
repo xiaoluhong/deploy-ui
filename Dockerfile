@@ -1,4 +1,4 @@
-FROM node:alpine as build1
+FROM node as build1
 
 RUN mkdir /root/src
 ADD  . /root/src
