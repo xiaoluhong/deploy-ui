@@ -4,7 +4,11 @@ RUN mkdir /root/src
 ADD  . /root/src
 WORKDIR /root/src
 
-RUN npm install && npm run build
+RUN npm install
+
+RUN npm run dev
+
+RUN npm run build
 
 FROM alpine
 
